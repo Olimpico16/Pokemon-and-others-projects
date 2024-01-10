@@ -1,0 +1,12 @@
+<lib-toastify-toast-container></lib-toastify-toast-container>
+<h4 class="animate-charcter">Agregar Pokemon</h4>
+
+<form class="row" (ngSubmit)="addPokemon()">
+  <input type="text"  [(ngModel)]="pokemon.name" name="name" placeholder="Nombre del pokemon" class="form-control mb-2"/>
+
+  <input type="text" [(ngModel)]="pokemon.type" name="type" placeholder="Tipo del Pokemon" class="form-control mb-2" />
+
+  <button class="btn btn-outline-dark" type="submit">Agregar Pokemon</button>
+
+
+</form>

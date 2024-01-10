@@ -1,0 +1,15 @@
+<h1>Pokemon App <img src="../../../assets/www.MessenTools.com-Pokemon-pok327.gif" alt=""> </h1>
+<hr>
+
+<div class="row">
+
+  <div class="col">
+    <app-pokemon-list (onDelete)="PokemonService.deletePokemonById($event)" [pokemonList]="PokemonService.pokemons"></app-pokemon-list>
+  </div>
+
+  <div class="col">
+    <app-add-pokemon (onNewPokemon)="PokemonService.onNewPokemon($event)"></app-add-pokemon>
+  </div>
+
+
+</div>

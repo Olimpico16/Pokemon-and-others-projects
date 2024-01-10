@@ -1,0 +1,20 @@
+<h1>Pilar</h1>
+
+<dl>
+  <td>Nombre:</td>
+  <dd> {{ name }} </dd>
+
+  <td>Edad:</td>
+  <dd> {{ age }} </dd>
+
+  <td>Método:</td>
+  <dd> {{ getHeroDescription() }} </dd>
+
+  <td>Capitalizado:</td>
+  <dd> {{ capitalizedName }} </dd>
+
+</dl>
+
+<button class="btn btn-outline-primary mx-2" (click)="changeCharacter()" *ngIf="name !== 'Muichiro Tokito'"> Cambiar Nombre </button>
+<button class="btn btn-outline-success mx-2" (click)="resetForm()" *ngIf="name !== 'kyojuro rengoku' && age !== '20'"> Restablecer </button>
+<button class="btn btn-outline-primary" (click)="changeAge()" *ngIf="age !== '14'"> Cambiar Edad </button>

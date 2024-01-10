@@ -1,0 +1,11 @@
+<h4 class="animate-charcter">Listado de Pokemones </h4>
+<ng-template #nothingPokemon> <h2 class="text-danger"> No hay Pokemones en la lista </h2> <img src="../../../../assets/ash.gif" alt=""> </ng-template>
+
+<div *ngIf="pokemonList.length; else nothingPokemon">
+<ul class="list-group">
+  <li class="list-group-item d-flex mb-1" *ngFor="let pokemones of pokemonList; let i = index; let isFirst = first; let isLast = last; let isEven = even; let isOdd = odd" [ngClass]="{'list-group-item-ligth': isEven, 'list-group-item-info': isOdd }">
+    <span class="text-info"> {{ i + 1 }}.</span> {{pokemones.name | titlecase}} - <strong> {{pokemones.type | titlecase}} </strong>
+    <button class="btn btn-outline-danger ms-auto p-2" (click)="onDeletePokemon(pokemones.id)"> X </button>
+  </li>
+</ul>
+</div>
