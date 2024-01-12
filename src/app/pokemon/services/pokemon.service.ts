@@ -10,19 +10,7 @@ export class PokemonService {
 
   constructor(private _toastService: ToastService) { }
 
-  public pokemons:Pokemons[] = [{
-    id: uuid(),
-    name: 'Snorlax',
-    type: 'Normal'
-  },{
-    id: uuid(),
-    name: 'Blaziken',
-    type: 'Fuego/Lucha'
-  },{
-    id: uuid(),
-    name: 'Bulbasur',
-    type: 'Planta'
-  }]
+  public pokemons:Pokemons[] = []
 
   onNewPokemon( pokemon: Pokemons ):void{
     const newPokemon:Pokemons = { id:uuid(),...pokemon }
@@ -30,16 +18,14 @@ export class PokemonService {
   }
 
   deletePokemonById(id: string){
-    const pokeFilter: (string | undefined)[] = this.pokemons.filter((pokemon) => pokemon.id !== id).map(p => p.id);
-    const idNumberPokemon = pokeFilter.reduce((acc: string, num: string | undefined) => {
-      if (num !== undefined) {
-        return acc + num;
-      }
-      return acc;
-    }, "");
+    const deletedPokemonIndex = this.pokemons.findIndex(pokemon => pokemon.id === id);
 
-    this._toastService.info(`${this.pokemons} eliminado`)
-    console.log(idNumberPokemon);
+  if (deletedPokemonIndex !== -1) {
+    const deletedPokemon = this.pokemons.splice(deletedPokemonIndex, 1)[0];
+    this._toastService.warn(`${deletedPokemon.name} eliminado`);
+  } else {
+    this._toastService.info(`No se encontró el Pokémon con ID ${id}`);
+  }
   }
 
 }
